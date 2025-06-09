@@ -60,7 +60,13 @@ The backend will be available at `http://localhost:8000`
    npm install
    ```
 
-3. Run the development server:
+3. Set the environment variable used by the frontend to reach the backend API:
+   ```bash
+   # Example for a local backend
+   export NEXT_PUBLIC_API_URL=http://localhost:8000
+   ```
+
+4. Run the development server:
    ```bash
    npm run dev
    ```
