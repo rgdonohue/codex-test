@@ -88,6 +88,16 @@ The frontend will be available at `http://localhost:3000`
 - Frontend development server includes hot reloading
 - Both servers can run simultaneously for full-stack development
 
+## Running Tests
+
+Backend tests use **pytest** and FastAPI's TestClient. Install the backend
+requirements and run:
+
+```bash
+pip install -r backend/requirements.txt
+pytest
+```
+
 ## Production Deployment
 
 For production deployment:
