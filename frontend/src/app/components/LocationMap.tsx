@@ -20,10 +20,22 @@ export default function LocationMap() {
     description: ''
   });
   const [distance, setDistance] = useState<{ km: number; miles: number } | null>(null);
+  const [fromId, setFromId] = useState<number | null>(null);
+  const [toId, setToId] = useState<number | null>(null);
 
   useEffect(() => {
     fetchLocations();
   }, []);
+
+  useEffect(() => {
+    if (fromId !== null && toId !== null) {
+      const from = locations.find((l) => l.id === fromId);
+      const to = locations.find((l) => l.id === toId);
+      if (from && to) {
+        calculateDistance(from, to);
+      }
+    }
+  }, [fromId, toId, locations]);
 
   const fetchLocations = async () => {
     try {
@@ -132,9 +144,10 @@ export default function LocationMap() {
           <div className="grid grid-cols-2 gap-4">
             <select
               className="p-2 rounded bg-gray-700 text-white"
+              value={fromId ?? ''}
               onChange={(e) => {
-                const from = locations.find(l => l.id === parseInt(e.target.value));
-                if (from) calculateDistance(from, locations[0]);
+                const id = parseInt(e.target.value);
+                setFromId(isNaN(id) ? null : id);
               }}
             >
               <option value="">Select first location</option>
@@ -146,9 +159,10 @@ export default function LocationMap() {
             </select>
             <select
               className="p-2 rounded bg-gray-700 text-white"
+              value={toId ?? ''}
               onChange={(e) => {
-                const to = locations.find(l => l.id === parseInt(e.target.value));
-                if (to) calculateDistance(locations[0], to);
+                const id = parseInt(e.target.value);
+                setToId(isNaN(id) ? null : id);
               }}
             >
               <option value="">Select second location</option>
