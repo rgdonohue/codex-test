@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from geopy.distance import geodesic
 from typing import List
+from datetime import datetime
 from ..models import Location, LocationCreate, DistanceRequest, DistanceResponse, NearbyRequest
 
 router = APIRouter(prefix="/gis", tags=["gis"])
