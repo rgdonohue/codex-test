@@ -1,6 +1,37 @@
-# GIS Location Services Application
+# Geospatial API with FastAPI and Next.js
 
-This is a modern full-stack application template using FastAPI for the backend and Next.js for the frontend.
+
+![GIS Explorer 2025 UI Preview](frontend/public/landing-screenshot.png)
+
+A modern full-stack application template featuring advanced geospatial capabilities using FastAPI for the backend and Next.js for the frontend.
+
+## Features
+
+### Backend (FastAPI)
+- **Location Management**
+  - CRUD operations for geospatial locations
+  - Category-based location organization
+  - Elevation and metadata support
+  - Input validation for coordinates
+
+- **Spatial Analysis**
+  - Distance calculations with bearing
+  - Efficient nearby location search using R-tree spatial indexing
+  - Location clustering using DBSCAN-like algorithm
+  - Category-based filtering
+  - Bounding box optimizations
+
+- **Performance Optimizations**
+  - Spatial indexing for O(log n) queries
+  - Bounding box pre-filtering
+  - Efficient cluster detection
+
+### Frontend (Next.js)
+- Modern UI with Tailwind CSS
+- Interactive location management
+- Real-time distance calculations
+- Cluster visualization
+- API status monitoring
 
 ## Project Structure
 
@@ -11,6 +42,8 @@ This is a modern full-stack application template using FastAPI for the backend a
 │   │   ├── main.py
 │   │   ├── models.py
 │   │   └── routers/
+│   │       ├── gis.py
+│   │       └── gui.py
 │   ├── requirements.txt
 │   └── README.md
 ├── frontend/         # Next.js frontend
@@ -60,43 +93,34 @@ The backend will be available at `http://localhost:8000`
    npm install
    ```
 
-3. Set the environment variable used by the frontend to reach the backend API:
-   ```bash
-   # Example for a local backend
-   export NEXT_PUBLIC_API_URL=http://localhost:8000
-   ```
-
-4. Run the development server:
+3. Run the development server:
    ```bash
    npm run dev
    ```
 
 The frontend will be available at `http://localhost:3000`
 
-## Features
+## Frontend Preview
 
-- FastAPI backend with automatic API documentation
-- Next.js 14 frontend with App Router
-- TypeScript support
-- Modern UI with Tailwind CSS
-- Hot reloading for both frontend and backend
-- API integration between frontend and backend
+![GIS Explorer 2025 UI Preview](frontend/public/landing-screenshot.png)
+
+## API Endpoints
+
+### Location Management
+- `POST /gis/locations` - Create a new location
+- `GET /gis/locations` - Get all locations
+- `GET /gis/locations/{id}` - Get a specific location
+
+### Spatial Analysis
+- `POST /gis/distance` - Calculate distance between points
+- `POST /gis/nearby` - Find locations within radius
+- `GET /gis/clusters` - Find clusters of nearby locations
 
 ## Development
 
 - Backend API documentation is available at `http://localhost:8000/docs`
 - Frontend development server includes hot reloading
 - Both servers can run simultaneously for full-stack development
-
-## Running Tests
-
-Backend tests use **pytest** and FastAPI's TestClient. Install the backend
-requirements and run:
-
-```bash
-pip install -r backend/requirements.txt
-pytest
-```
 
 ## Production Deployment
 
@@ -109,6 +133,36 @@ For production deployment:
    ```
 
 2. The backend can be deployed using any ASGI server (e.g., Gunicorn with Uvicorn workers)
+
+## Future Enhancements
+
+1. **Data Persistence**
+   - PostgreSQL with PostGIS integration
+   - Database-level spatial indexing
+   - Advanced spatial queries
+
+2. **Advanced Spatial Analysis**
+   - Convex hull calculations
+   - Spatial interpolation
+   - Route optimization
+   - Geofencing
+
+3. **Visualization**
+   - GeoJSON export
+   - Heatmap generation
+   - Cluster visualization
+   - Elevation profiles
+
+4. **Data Quality**
+   - Coordinate validation
+   - Reverse geocoding
+   - Elevation data integration
+   - Quality metrics
+
+5. **Performance**
+   - Query metrics
+   - Spatial query caching
+   - Optimization hints
 
 ## Contributing
 
