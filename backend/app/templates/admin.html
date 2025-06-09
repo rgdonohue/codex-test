@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Admin</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        form { margin-bottom: 2em; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Location Admin</h1>
+    <form action="/admin/locations" method="post">
+        <input name="name" placeholder="Name" required>
+        <input name="latitude" placeholder="Latitude" type="number" step="any" required>
+        <input name="longitude" placeholder="Longitude" type="number" step="any" required>
+        <input name="description" placeholder="Description">
+        <button type="submit">Add</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for loc in locations %}
+            <tr>
+                <td>{{ loc.id }}</td>
+                <td>{{ loc.name }}</td>
+                <td>{{ loc.latitude }}</td>
+                <td>{{ loc.longitude }}</td>
+                <td>{{ loc.description or '' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
