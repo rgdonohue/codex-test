@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 interface Location {
   id: number;
   name: string;
@@ -39,7 +41,7 @@ export default function LocationMap() {
 
   const fetchLocations = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/gis/locations');
+      const response = await axios.get(`${API_URL}/gis/locations`);
       setLocations(response.data);
     } catch (error) {
       console.error('Error fetching locations:', error);
@@ -49,7 +51,7 @@ export default function LocationMap() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/gis/locations', newLocation);
+      await axios.post(`${API_URL}/gis/locations`, newLocation);
       setNewLocation({ name: '', latitude: 0, longitude: 0, description: '' });
       fetchLocations();
     } catch (error) {
@@ -59,7 +61,7 @@ export default function LocationMap() {
 
   const calculateDistance = async (from: Location, to: Location) => {
     try {
-      const response = await axios.post('http://localhost:8000/gis/distance', {
+      const response = await axios.post(`${API_URL}/gis/distance`, {
         from_lat: from.latitude,
         from_lon: from.longitude,
         to_lat: to.latitude,

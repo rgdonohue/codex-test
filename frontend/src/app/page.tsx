@@ -4,13 +4,15 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LocationMap from './components/LocationMap';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 export default function Home() {
   const [apiStatus, setApiStatus] = useState<string>('loading');
 
   useEffect(() => {
     const checkApiHealth = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/health');
+        const response = await axios.get(`${API_URL}/api/health`);
         setApiStatus(response.data.status);
       } catch (error) {
         setApiStatus('error');
