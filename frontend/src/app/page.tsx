@@ -26,16 +26,16 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-center mb-8">
           GIS Location Manager
         </h1>
-        
+
         <div className="max-w-4xl mx-auto">
           <div className="mb-8 bg-gray-800 rounded-lg shadow-xl p-6">
             <h2 className="text-2xl font-semibold mb-4">System Status</h2>
             <div className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
               <span className="text-lg">Backend API</span>
               <span className={`px-3 py-1 rounded-full text-sm ${
-                apiStatus === 'healthy' 
-                  ? 'bg-green-500 text-white' 
-                  : apiStatus === 'error' 
+                apiStatus === 'healthy'
+                  ? 'bg-green-500 text-white'
+                  : apiStatus === 'error'
                   ? 'bg-red-500 text-white'
                   : 'bg-yellow-500 text-white'
               }`}>
@@ -55,4 +55,4 @@ export default function Home() {
       </div>
     </main>
   );
-} 
+}
