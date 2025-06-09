@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import gis
+from .routers import gis, gui
 
 app = FastAPI(
     title="GIS API",
@@ -19,6 +19,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(gis.router)
+app.include_router(gui.router)
 
 @app.get("/")
 async def root():
