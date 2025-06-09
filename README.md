@@ -100,10 +100,6 @@ The backend will be available at `http://localhost:8000`
 
 The frontend will be available at `http://localhost:3000`
 
-## Frontend Preview
-
-![GIS Explorer 2025 UI Preview](frontend/public/landing-screenshot.png)
-
 ## API Endpoints
 
 ### Location Management
